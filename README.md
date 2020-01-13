@@ -1,4 +1,4 @@
-## Meraki Captive Portal / Splash Page for Telcel
+## Meraki Captive Portal / Splash Page
 
 This program simulates a splash page captive portal for users that want to connect to a Meraki access point for the first time. Upon initial connection, users are redirected to a splash page that prompts for a phone number and email address. When these fields are filled out, the user is allotted 30 minutes to browse the web. When those 30 minutes are completed (assuming the splash frequency is set to 30 minutes on the Meraki dashboard for the access point), the user is redirected to another splash page, where they must sign in using their Facebook credentials in order to use the internet for an additional 30 minutes.
 
@@ -28,3 +28,25 @@ $ vi userInfo.txt
 
 ```
 
+
+
+---------------------------------------------
+
+Contacts
+========
+Rohit Sharma (rohisha5@cisco.com)
+
+
+License
+========
+Provided under Cisco Sample Code License, for details see [here](LICENSE.md)
+
+
+Code of Conduct
+========
+Code of conduct [here](CODE_OF_CONDUCT.md)
+
+
+Contributing
+========
+Contributing guidelines [here](CONTRIBUTING.md)
