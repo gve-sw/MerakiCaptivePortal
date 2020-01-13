@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Login form with social</title>
+    <!--=======Font Open Sans======-->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <!--=======Font Awesome======-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!--=======Custom Style======-->
+    <link rel="stylesheet" href="../static/style.css">
+  </head>
+  <body>
+
+<script>
+        window.fbAsyncInit = function() {
+          FB.init({
+            appId      : '2359436594297792',
+            cookie     : true,
+            xfbml      : true,
+            version    : 'v5.0'
+          });
+            
+          FB.getLoginStatus(function(response) {
+            statusChangeCallback(response);
+          });  
+            
+        };
+      
+        (function(d, s, id){
+           var js, fjs = d.getElementsByTagName(s)[0];
+           if (d.getElementById(id)) {return;}
+           js = d.createElement(s); js.id = id;
+           js.src = "https://connect.facebook.net/en_US/sdk.js";
+           fjs.parentNode.insertBefore(js, fjs);
+         }(document, 'script', 'facebook-jssdk'));
+
+        function statusChangeCallback(response){
+             if(response.status === 'connected'){
+                 console.log('logged in, authenticated');
+                 setElements(true)
+             } else{
+                 console.log('not authenticated');
+                 setElements(false)
+             }
+         }
+
+        function checkLoginState() {
+            FB.getLoginStatus(function(response) {
+                statusChangeCallback(response);
+            });
+        }
+
+        function setElements(isLoggedIn){
+            if (isLoggedIn){
+                var form = document.createElement('form');
+                form.setAttribute('method', 'post');
+                form.setAttribute('action', 'http://localhost:5004/loginsocial');
+                form.style.display = 'hidden';
+                document.body.appendChild(form)
+                form.submit();
+            } else {
+
+            }
+        }
+      </script>
+
+
+
+   <form action="#" id="login-form">
+      <div class="head">Login</div>
+      <div class="social">
+        <h4>Connect with</h4>
+        <ul>
+          <li> 
+          <fb:login-button 
+          id="fb-btn"
+          scope="public_profile,email"
+          onlogin="checkLoginState();">
+          </fb:login-button>
+          <!--<a href="" class="facebook">
+              <span class="fa fa-facebook"></span>
+              <fb:login-button 
+                scope="public_profile,email"
+                onlogin="checkLoginState();">
+              </fb:login-button>
+          </a>-->
+          </li>
+          <li>
+            <a href="" class="twitter">
+              <span class="fa fa-twitter"></span>
+            </a>
+          </li>
+          <li>
+            <a href="" class="google-plus">
+              <span class="fa fa-google-plus"></span>
+            </a>
+          </li>
+        </ul>
+       </div>
+
+       <div class="divider">
+         <span>or</span>
+       </div>
+
+      <div class="input-field">
+        <label for="email">Email</label>
+        <input type="email" name="email" required="email" />
+        <label for="password">Password</label> 
+        <input type="password" name="password" required/>
+        <input type="submit" value="Login" />
+        <p class="text-p">Don't have an account? <a href="#">Sign up</a> </p>
+      </div>
+
+  </form>
+
+
+
+</body>
+</html>
+
+               
